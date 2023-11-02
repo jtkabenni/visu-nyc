@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
-import { useNavigate, Navigate, useRouteError } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 
-import NycvisuApi from "../api/api";
 /** Form for creating a new snack or drink item.
  *
  * Has state for the name/quantity of the item; on submission,
@@ -22,16 +21,6 @@ const ProfileForm = ({ update }) => {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    "LoginForm",
-    "login=",
-    typeof login,
-    "formData=",
-    formData,
-    "formErrors",
-    formErrors
-  );
-
   /** Send {name, quantity} to parent
    *    & clear form. */
 
@@ -43,10 +32,13 @@ const ProfileForm = ({ update }) => {
       email: formData.email,
       password: formData.password,
     };
-    const updatedUser = await NycvisuApi.updateUser(user.username, updateData);
-    console.log(updatedUser);
-    update(updatedUser);
-    navigate("/");
+    let result = await update(updateData);
+    if (result.success) {
+      navigate("/profile");
+    } else {
+      console.log(result.errors);
+      setFormErrors(result.errors);
+    }
   }
 
   /** Update local state w/curr state of input elem */
@@ -72,7 +64,7 @@ const ProfileForm = ({ update }) => {
           id="username"
           name="username"
           value={formData.username}
-          readonly
+          readOnly
         />
 
         <input
@@ -108,7 +100,9 @@ const ProfileForm = ({ update }) => {
           value={formData.lastName}
           onChange={handleChange}
         />
-
+        {formErrors.map((e) => (
+          <p className="error">{e}</p>
+        ))}
         <button>Update profile</button>
       </form>
     </div>

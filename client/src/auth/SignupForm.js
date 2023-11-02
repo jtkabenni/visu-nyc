@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NycvisuApi from "../api/api";
 /** Form for creating a new snack or drink item.
  *
  * Has state for the name/quantity of the item; on submission,
@@ -15,17 +14,20 @@ const SignupForm = ({ signup }) => {
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formErrors, setFormErrors] = useState([]);
 
   /** Send {name, quantity} to parent
    *    & clear form. */
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const token = await NycvisuApi.signup(formData);
-    console.log(token);
-    signup(token);
-    setFormData(INITIAL_STATE);
-    navigate("/");
+
+    let result = await signup(formData);
+    if (result.success) {
+      navigate("/");
+    } else {
+      setFormErrors(result.errors);
+    }
   }
 
   /** Update local state w/curr state of input elem */
@@ -86,7 +88,9 @@ const SignupForm = ({ signup }) => {
           value={formData.lastName}
           onChange={handleChange}
         />
-
+        {formErrors.map((e) => (
+          <p className="error">{e}</p>
+        ))}
         <button>Sign up</button>
       </form>
     </div>

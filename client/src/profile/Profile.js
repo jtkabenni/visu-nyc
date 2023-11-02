@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import UserContext from "../auth/UserContext";
 
 import SavedMapList from "../maps/SavedMapList";
 import { Link } from "react-router-dom";
 
-function Profile({ update }) {
+function Profile() {
   const { user } = useContext(UserContext);
   console.log(user);
   return (
@@ -38,7 +38,6 @@ function Profile({ update }) {
               <Link to="/profile/update">Update</Link>
             </button>
           </div>
-          {/* <ProfileForm update={update}></ProfileForm> */}
 
           <SavedMapList maps={user.maps}></SavedMapList>
         </div>

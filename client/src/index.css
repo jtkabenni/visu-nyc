@@ -120,6 +120,10 @@ input {
   }
 }
 
+.error {
+  color: red;
+}
+
 button {
   padding: 10px;
   text-align: center;
@@ -146,7 +150,6 @@ button {
 
 .logo a {
   font-size: 30px;
-
   margin: 0;
 }
 .logo a:hover {

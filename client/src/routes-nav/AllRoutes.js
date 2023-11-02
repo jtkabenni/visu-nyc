@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Redirect } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "../Home";
 import LoginForm from "../auth/LoginForm";
 import SignupForm from "../auth/SignupForm";

@@ -1,16 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
-import NycvisuApi from "../api/api";
 /** Form for creating a new snack or drink item.
  *
  * Has state for the name/quantity of the item; on submission,
@@ -29,15 +19,18 @@ const SaveMapForm = ({ saveMap }) => {
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(INITIAL_STATE);
-
+  const [formErrors, setFormErrors] = useState([]);
   /** Send {name, quantity} to parent
    *    & clear form. */
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    await saveMap(formData);
-    setFormData(INITIAL_STATE);
-    navigate("/");
+    let result = await saveMap(formData);
+    if (result.success) {
+      navigate("/profile");
+    } else {
+      setFormErrors(result.errors);
+    }
   }
 
   /** Update local state w/curr state of input elem */
@@ -101,7 +94,9 @@ const SaveMapForm = ({ saveMap }) => {
           value={formData.notes}
           onChange={handleChange}
         />
-
+        {formErrors.map((e) => (
+          <p className="error">{e}</p>
+        ))}
         <button>Save</button>
       </form>
     </div>

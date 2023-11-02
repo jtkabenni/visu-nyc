@@ -62,7 +62,7 @@ const LoginForm = ({ login }) => {
         />
 
         {formErrors.map((e) => (
-          <p>{e}</p>
+          <p className="error">{e}</p>
         ))}
         <button>Login</button>
       </form>

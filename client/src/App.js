@@ -52,9 +52,16 @@ function App() {
     localStorage.removeItem("token");
     setUser(null);
   }
-  function update(user) {
-    console.log(user);
-    setUser(user);
+
+  async function update(data) {
+    try {
+      const result = await NycvisuApi.updateUser(user.username, data);
+      console.log(result);
+      return { success: true };
+    } catch (errors) {
+      console.error("update user failed", errors);
+      return { success: false, errors };
+    }
   }
 
   useEffect(
