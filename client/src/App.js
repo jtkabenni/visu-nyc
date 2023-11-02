@@ -11,7 +11,6 @@ import UserContext from "./auth/UserContext";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
-  const [savedMaps, setSavedMaps] = useState(new Set([]));
 
   async function login(loginData) {
     try {

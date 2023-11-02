@@ -1,14 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  ListGroup,
-  ListGroupItem,
-} from "reactstrap";
 import NycvisuApi from "../api/api";
 /** Form for creating a new snack or drink item.
  *

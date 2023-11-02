@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../auth/UserContext";
-import ProfileForm from "./ProfileForm";
-import SavedMapCard from "../maps/SavedMapCard";
+
 import SavedMapList from "../maps/SavedMapList";
 import { Link } from "react-router-dom";
 
