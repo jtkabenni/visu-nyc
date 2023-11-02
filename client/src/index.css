@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+  background-color: rgb(244, 244, 244);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+img {
+  width: 700px;
+  border-radius: 5px 5px 0 0;
+}
+
+.Navigation {
+  background-color: white;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  border-bottom: black solid 1px;
+  color: inherit;
+}
+
+li {
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  list-style-type: none;
+  background-color: #ffffff;
+  padding: 0 45px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+nav div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App {
+  margin: 0 0;
+}
+.form-container {
+  padding-top: 100px;
+  height: 100vh;
+}
+
+.container {
+  margin: 0 45px;
+  height: 100%;
+}
+
+.map-container {
+  padding: 0 45px;
+  background-color: white;
+}
+
+h1.map {
+  margin: 0;
+  padding: 10px;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+
+form > * {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 100%;
+}
+input {
+  padding: 5px;
+  border: 0;
+  border-bottom: 2px solid #eee;
+  &:focus {
+    outline: 0;
+  }
+}
+
+button {
+  padding: 10px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  /* width: 100%; */
+}
+
+.map-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 5px;
+}
+
+.map-card {
+  border-radius: 5px;
+  margin: 10px 0;
+  background-color: white;
+}
+
+.logo a {
+  font-size: 30px;
+
+  margin: 0;
+}
+.logo a:hover {
+  border-bottom: none;
+}
+
+.profile-sections {
+  justify-content: space-evenly;
+  margin: 50px 0px 0px 0px;
+}
+
+.profile-details {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  margin: 0 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile-detail {
+  padding: 5px 0;
+}
+.profile-detail > *,
+.profile-details > h3,
+.map-list > h3 {
+  text-align: left;
+  margin: 5px;
+}

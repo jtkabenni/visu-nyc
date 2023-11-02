@@ -1,0 +1,111 @@
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import UserContext from "../auth/UserContext";
+
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  ListGroup,
+  ListGroupItem,
+} from "reactstrap";
+import NycvisuApi from "../api/api";
+/** Form for creating a new snack or drink item.
+ *
+ * Has state for the name/quantity of the item; on submission,
+ * sends {name, qty} to fn rec'd from parent.
+ *
+ */
+
+const SaveMapForm = ({ saveMap }) => {
+  const { user } = useContext(UserContext);
+  console.log(user);
+  const INITIAL_STATE = {
+    name: "",
+    source: "",
+    file: null,
+    notes: "",
+  };
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState(INITIAL_STATE);
+
+  /** Send {name, quantity} to parent
+   *    & clear form. */
+
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    await saveMap(formData);
+    setFormData(INITIAL_STATE);
+    navigate("/");
+  }
+
+  /** Update local state w/curr state of input elem */
+
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData((fData) => ({
+      ...fData,
+      [name]: value,
+    }));
+  };
+
+  const handleUpload = (evt) => {
+    evt.persist();
+    console.log(evt.target.files[0]);
+    setFormData((fData) => ({
+      ...fData,
+      file: evt.target.files[0],
+    }));
+  };
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+  /** render form */
+  return (
+    <div class="form-container">
+      <form onSubmit={handleSubmit}>
+        <h3>Add a new map</h3>
+
+        <input
+          placeholder="Name"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+
+        <input
+          placeholder="Source"
+          id="source"
+          name="source"
+          value={formData.source}
+          onChange={handleChange}
+        />
+
+        <input
+          placeholder="File"
+          type="file"
+          id="file"
+          name="file"
+          onChange={handleUpload}
+        />
+
+        <input
+          placeholder="Notes"
+          id="notes"
+          name="notes"
+          value={formData.notes}
+          onChange={handleChange}
+        />
+
+        <button>Save</button>
+      </form>
+    </div>
+  );
+};
+
+export default SaveMapForm;
