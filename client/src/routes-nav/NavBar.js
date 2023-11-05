@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../auth/UserContext";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 function NavBar({ logout, token }) {
+  const { user } = useContext(UserContext);
   // const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  return (
+  return user ? (
     <nav>
       <div>
         <b class="logo">
@@ -27,7 +29,7 @@ function NavBar({ logout, token }) {
               <Link to="/all-maps">All Maps</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile">Hi, {user.username}</Link>
             </li>
             <li>
               <Link onClick={logout}>Logout</Link>
@@ -48,6 +50,8 @@ function NavBar({ logout, token }) {
         )}
       </div>
     </nav>
+  ) : (
+    ""
   );
 }
 // end
