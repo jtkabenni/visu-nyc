@@ -133,6 +133,10 @@ button {
   /* width: 100%; */
 }
 
+button:hover {
+  background-color: rgb(151, 151, 151);
+}
+
 .map-list {
   display: flex;
   flex-direction: column;
@@ -179,4 +183,30 @@ button {
 .map-list > h3 {
   text-align: left;
   margin: 5px;
+}
+.home-info {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.maptype-buttons {
+  display: flex;
+}
+
+.maptype-button {
+  background-color: #433c57;
+  padding: 15px;
+  margin: 20px 0px 0px;
+  color: white;
+  border-radius: 5px 5px 0 0;
+}
+
+.selected {
+  background-color: #121017;
+}
+
+.footer {
+  margin: 0px;
+  padding: 15px;
 }

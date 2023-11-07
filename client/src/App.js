@@ -7,10 +7,12 @@ import NycvisuApi from "./api/api";
 import { BrowserRouter } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import UserContext from "./auth/UserContext";
-import Footer from "./AppFooter";
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
+
+  // const [allMaps, setAllMaps] = useState[]
 
   async function login(loginData) {
     try {
@@ -69,11 +71,10 @@ function App() {
       async function user() {
         if (token) {
           NycvisuApi.token = token;
-          console.log(token);
+
           const decoded = jwt_decode(token);
           const user = await NycvisuApi.getUser(decoded.username);
           setUser(user);
-          console.log(user);
         }
       }
       user();
@@ -93,7 +94,6 @@ function App() {
             signup={signup}
             update={update}
           ></AllRoutes>
-          <Footer />
         </UserContext.Provider>
       </BrowserRouter>
     </div>

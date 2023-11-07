@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import AppFooter from "../AppFooter";
 /** Form for creating a new snack or drink item.
  *
  * Has state for the name/quantity of the item; on submission,
@@ -10,7 +11,7 @@ import UserContext from "../auth/UserContext";
 
 const SaveMapForm = ({ saveMap }) => {
   const { user } = useContext(UserContext);
-  console.log(user);
+
   const INITIAL_STATE = {
     name: "",
     source: "",
@@ -45,7 +46,7 @@ const SaveMapForm = ({ saveMap }) => {
 
   const handleUpload = (evt) => {
     evt.persist();
-    console.log(evt.target.files[0]);
+
     setFormData((fData) => ({
       ...fData,
       file: evt.target.files[0],
@@ -99,6 +100,7 @@ const SaveMapForm = ({ saveMap }) => {
         ))}
         <button>Save</button>
       </form>
+      <AppFooter />
     </div>
   );
 };

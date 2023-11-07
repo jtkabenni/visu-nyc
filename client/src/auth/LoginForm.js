@@ -40,7 +40,7 @@ const LoginForm = ({ login }) => {
   /** render form */
 
   return (
-    <div class="form-container">
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <h3>Login</h3>
 

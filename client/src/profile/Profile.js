@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import UserContext from "../auth/UserContext";
+import AppFooter from "../AppFooter";
 
 import SavedMapList from "../maps/SavedMapList";
 import { Link } from "react-router-dom";
@@ -44,6 +45,7 @@ function Profile() {
       ) : (
         ""
       )}
+      <AppFooter />
     </div>
   );
 }

@@ -5,16 +5,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 function NavBar({ logout, token }) {
   const { user } = useContext(UserContext);
   // const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  return user ? (
+  return (
     <nav>
       <div>
-        <b class="logo">
+        <b className="logo">
           {" "}
           <Link to="/">Visu-NYC</Link>
         </b>
       </div>
       <div>
-        {token ? (
+        {token && user ? (
           //  || isAuthenticated
           <>
             {" "}
@@ -50,8 +50,6 @@ function NavBar({ logout, token }) {
         )}
       </div>
     </nav>
-  ) : (
-    ""
   );
 }
 // end

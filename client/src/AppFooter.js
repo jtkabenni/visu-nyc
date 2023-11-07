@@ -2,9 +2,9 @@ import React from "react";
 
 function AppFooter() {
   return (
-    <p>
+    <p className="footer">
       Data provided by{" "}
-      <a href="https://opendata.cityofnewyork.us/">NYC Open Data</a> . Created
+      <a href="https://opendata.cityofnewyork.us/">NYC Open Data</a> | Created
       by
       <a href="https://github.com/jtkabenni"> Jenny Tak</a>{" "}
     </p>
