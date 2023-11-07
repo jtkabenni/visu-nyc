@@ -72,10 +72,10 @@ nav div {
 .App {
   margin: 0 0;
 }
-.form-container {
+/* .form-container {
   padding-top: 100px;
   height: 100vh;
-}
+} */
 
 .container {
   margin: 0 45px;
@@ -95,7 +95,7 @@ h1.map {
 form {
   width: 400px;
   display: flex;
-  margin: auto;
+  margin: 100px auto;
   justify-content: center;
   align-items: center;
   flex-direction: column;
