@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import UserContext from "../auth/UserContext";
 import { Navigate } from "react-router-dom";
 import SavedMapList from "./SavedMapList";
-import AppFooter from "../AppFooter";
+
 function AllMaps() {
   const { user } = useContext(UserContext);
   const [maps, setMaps] = useState([]);
@@ -26,7 +26,6 @@ function AllMaps() {
   return (
     <div class="container">
       <SavedMapList maps={maps}></SavedMapList>
-      <AppFooter />
     </div>
   );
 }

@@ -35,7 +35,7 @@ function Home() {
           </div>
           {user ? (
             <>
-              <p className="map">
+              <p className="map-instructions">
                 Save a map to your account by clicking on Share {">"} Export
                 Image, and saving locally. Then, navigate to{" "}
                 <Link to="/create-map">Save Map</Link> to upload your new map.

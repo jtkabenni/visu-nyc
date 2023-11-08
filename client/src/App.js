@@ -7,6 +7,7 @@ import NycvisuApi from "./api/api";
 import { BrowserRouter } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import UserContext from "./auth/UserContext";
+import AppFooter from "./AppFooter";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -94,6 +95,7 @@ function App() {
             signup={signup}
             update={update}
           ></AllRoutes>
+          <AppFooter />
         </UserContext.Provider>
       </BrowserRouter>
     </div>

@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-import AppFooter from "../AppFooter";
 /** Form for creating a new snack or drink item.
  *
  * Has state for the name/quantity of the item; on submission,
@@ -100,7 +99,6 @@ const SaveMapForm = ({ saveMap }) => {
         ))}
         <button>Save</button>
       </form>
-      <AppFooter />
     </div>
   );
 };
