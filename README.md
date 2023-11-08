@@ -1,6 +1,6 @@
 # Visu-NYC Documentation
 
-Visu-NYC is a geospacial visualization application that allows users to see public data from NYC. This app embeds a map component called kepler.gl and has backend functionality to allow users to save maps to their profiles.
+Visu-NYC is a geospacial visualization application that allows users to see public data from NYC. This app embeds a map component called [kepler.gl](https://github.com/keplergl/kepler.gl) and has backend functionality to allow users to create accounts and save maps to their profiles.
 
 \*The app currently only allows you to view maps of tree count by census tract (neighborhood) and restaurant inspections. More maps to be added!
 

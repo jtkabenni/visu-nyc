@@ -10,7 +10,7 @@ function NavBar({ logout, token }) {
       <div>
         <b className="logo">
           {" "}
-          <Link to="/">Visu-NYC</Link>
+          <Link to="/">Visu NYC</Link>
         </b>
       </div>
       <div>
