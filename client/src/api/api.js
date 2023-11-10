@@ -64,7 +64,7 @@ class NycvisuApi {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("file", data.file);
-    formData.append("source", data.source);
+
     formData.append("notes", data.notes);
     console.log(formData);
     let res = await this.request(`users/${username}/maps/`, formData, "post");

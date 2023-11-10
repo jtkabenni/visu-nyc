@@ -130,27 +130,6 @@ router.delete(
   }
 );
 
-/** POST /[username]/jobs/[id]  { state } => { application }
- *
- * Returns {"applied": jobId}
- *
- * Authorization required: admin or same-user-as-:username
- * */
-
-router.post(
-  "/:username/jobs/:id",
-  ensureCorrectUserOrAdmin,
-  async function (req, res, next) {
-    try {
-      const jobId = +req.params.id;
-      await User.applyToJob(req.params.username, jobId);
-      return res.json({ applied: jobId });
-    } catch (err) {
-      return next(err);
-    }
-  }
-);
-
 const multer = require("multer");
 const path = require("path");
 const storage = multer.diskStorage({
@@ -174,7 +153,7 @@ router.post(
     console.log("Uploaded");
     const schema = {
       ...req.body,
-      file: req.file.path,
+      file: req.file ? req.file.path : "",
     };
     console.log(schema);
     try {

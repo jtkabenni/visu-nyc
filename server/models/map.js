@@ -16,14 +16,14 @@ class Map {
    * Throws BadRequestError if company already in database.
    * */
 
-  static async create({ name, source, file, notes }) {
-    console.log("CREATING MAPPPP");
+  static async create({ name, file, notes }) {
+    console.log("Creating map...");
     const result = await db.query(
       `INSERT INTO maps
-           (  name, source, file, note)
-           VALUES ($1, $2, $3, $4, $5)
-           RETURNING id, name, source, file, note`,
-      [name, source, file, notes]
+           (  name,file, note)
+           VALUES ($1, $2, $3)
+           RETURNING id, name, file, note`,
+      [name, file, notes]
     );
     const map = result.rows[0];
 
@@ -42,7 +42,7 @@ class Map {
 
   static async findAll() {
     const result = await db.query(
-      `SELECT name, source, file, note, user_username
+      `SELECT name, file, note, user_username
       FROM maps
       `
     );

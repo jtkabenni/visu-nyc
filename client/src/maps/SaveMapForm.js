@@ -13,7 +13,6 @@ const SaveMapForm = ({ saveMap }) => {
 
   const INITIAL_STATE = {
     name: "",
-    source: "",
     file: null,
     notes: "",
   };
@@ -68,14 +67,6 @@ const SaveMapForm = ({ saveMap }) => {
           id="name"
           name="name"
           value={formData.name}
-          onChange={handleChange}
-        />
-
-        <input
-          placeholder="Source"
-          id="source"
-          name="source"
-          value={formData.source}
           onChange={handleChange}
         />
 

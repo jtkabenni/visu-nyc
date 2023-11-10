@@ -138,7 +138,7 @@ class User {
 
     if (!user) throw new NotFoundError(`No user: ${username}`);
     const userMaps = await db.query(
-      `SELECT id, name, source, file, note FROM maps WHERE user_username = $1`,
+      `SELECT id, name, file, note FROM maps WHERE user_username = $1`,
       [username]
     );
     user.maps = userMaps.rows;
@@ -190,13 +190,13 @@ class User {
   }
 
   static async createMap(username, data) {
-    const { name, source, file, notes } = data;
+    const { name, file, notes } = data;
     const result = await db.query(
       `INSERT INTO maps
-           ( name, source, file, note, user_username)
-           VALUES ($1, $2, $3, $4, $5)
-           RETURNING id, name, source, file, note`,
-      [name, source, file, notes, username]
+           ( name, file, note, user_username)
+           VALUES ($1, $2, $3, $4)
+           RETURNING id, name, file, note`,
+      [name, file, notes, username]
     );
     const newMap = result.rows[0];
 
