@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Auth0test from "./Auth0test";
 /** Form for creating a new snack or drink item.
  *
  * Has state for the name/quantity of the item; on submission,
@@ -66,6 +66,7 @@ const LoginForm = ({ login }) => {
         ))}
         <button>Login</button>
       </form>
+      <Auth0test></Auth0test>
     </div>
   );
 };

@@ -8,11 +8,6 @@
       "minLength": 1,
       "maxLength": 50
     },
-    "source": {
-      "type": "string",
-      "minLength": 5,
-      "maxLength": 100
-    },
     "file": {
       "type": "string",
       "minLength": 5,
@@ -25,5 +20,5 @@
     }
   },
   "additionalProperties": false,
-  "required": ["name", "source", "file", "notes"]
+  "required": ["name", "file", "notes"]
 }

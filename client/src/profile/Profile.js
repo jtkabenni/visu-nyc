@@ -5,34 +5,34 @@ import SavedMapList from "../maps/SavedMapList";
 import { Link } from "react-router-dom";
 
 function Profile() {
-  const { user } = useContext(UserContext);
-  console.log(user);
+  const { currUser, currUserMaps } = useContext(UserContext);
+
   return (
     <>
-      <div class="container">
-        {user ? (
-          <div class="profile-sections">
-            <div class="profile-details">
+      <div className="container">
+        {currUser ? (
+          <div className="profile-sections">
+            <div className="profile-details">
               <h3>
-                {user.firstName} {user.lastName}
+                {currUser.firstName} {currUser.lastName}
               </h3>
-              <div class="profile-detail">
+              <div className="profile-detail">
                 <p>
                   <b>Username</b>
                 </p>
-                <p> {user.username}</p>
+                <p> {currUser.username}</p>
               </div>
-              <div class="profile-detail">
+              <div className="profile-detail">
                 <p>
                   <b>Email address</b>
                 </p>
-                <p> {user.email}</p>
+                <p> {currUser.email}</p>
               </div>
-              <div class="profile-detail">
+              <div className="profile-detail">
                 <p>
                   <b>Total maps</b>
                 </p>
-                <p> {user.maps.length} maps</p>
+                <p> {currUser.maps.length} maps</p>
               </div>
 
               <button>
@@ -40,7 +40,7 @@ function Profile() {
               </button>
             </div>
 
-            <SavedMapList maps={user.maps}></SavedMapList>
+            <SavedMapList maps={currUserMaps}></SavedMapList>
           </div>
         ) : (
           ""

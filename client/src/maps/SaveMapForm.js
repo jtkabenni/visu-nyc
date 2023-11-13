@@ -9,11 +9,10 @@ import UserContext from "../auth/UserContext";
  */
 
 const SaveMapForm = ({ saveMap }) => {
-  const { user } = useContext(UserContext);
+  const { currUser } = useContext(UserContext);
 
   const INITIAL_STATE = {
     name: "",
-    source: "",
     file: null,
     notes: "",
   };
@@ -53,10 +52,10 @@ const SaveMapForm = ({ saveMap }) => {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!currUser) {
       navigate("/");
     }
-  }, [user, navigate]);
+  }, [currUser, navigate]);
   /** render form */
   return (
     <div class="form-container">
@@ -68,14 +67,6 @@ const SaveMapForm = ({ saveMap }) => {
           id="name"
           name="name"
           value={formData.name}
-          onChange={handleChange}
-        />
-
-        <input
-          placeholder="Source"
-          id="source"
-          name="source"
-          value={formData.source}
           onChange={handleChange}
         />
 

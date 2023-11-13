@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import SavedMapList from "./SavedMapList";
 
 function AllMaps() {
-  const { user } = useContext(UserContext);
+  const { currUser } = useContext(UserContext);
   const [maps, setMaps] = useState([]);
   useEffect(
     function getMapsOnLoad() {
@@ -19,7 +19,7 @@ function AllMaps() {
 
     []
   );
-  if (!user) {
+  if (!currUser) {
     return <Navigate to="/" />;
   }
   console.log(maps);

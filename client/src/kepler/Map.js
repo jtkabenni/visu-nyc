@@ -44,13 +44,10 @@ export default function Map({ dataType }) {
 
 function KeplerMap({ data }) {
   const dispatch = useDispatch();
-  console.log(data);
   const dispatchData = Processors.processCsvData(data.data);
-  console.log(dispatchData);
 
   React.useEffect(() => {
     if (dispatchData) {
-      console.log(dispatchData);
       dispatch(
         addDataToMap({
           datasets: {

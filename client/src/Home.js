@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [dataType, setDataType] = useState("trees");
-  const { user } = useContext(UserContext);
+  const { currUser } = useContext(UserContext);
 
   async function changeMap(type) {
     console.log(type);
@@ -33,7 +33,7 @@ function Home() {
               Restaurants
             </button>
           </div>
-          {user ? (
+          {currUser ? (
             <>
               <p className="map-instructions">
                 Save a map to your account by clicking on Share {">"} Export

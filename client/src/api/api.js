@@ -49,6 +49,23 @@ class NycvisuApi {
     return res.user;
   }
 
+  static async getAllUsers() {
+    let res = await this.request(`users/`);
+    return res.users;
+  }
+
+  static async getAuth0User(sub) {
+    let res = await this.request(`users/auth0/${sub}`);
+    console.log(res);
+    return res.user;
+  }
+
+  static async createAuth0User(data) {
+    let res = await this.request(`users/auth0`, data, "post");
+    console.log(res.user);
+    return res.user;
+  }
+
   static async updateUser(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
@@ -64,7 +81,7 @@ class NycvisuApi {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("file", data.file);
-    formData.append("source", data.source);
+
     formData.append("notes", data.notes);
     console.log(formData);
     let res = await this.request(`users/${username}/maps/`, formData, "post");

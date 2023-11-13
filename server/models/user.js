@@ -138,10 +138,27 @@ class User {
 
     if (!user) throw new NotFoundError(`No user: ${username}`);
     const userMaps = await db.query(
-      `SELECT id, name, source, file, note FROM maps WHERE user_username = $1`,
+      `SELECT id, name, file, note FROM maps WHERE user_username = $1`,
       [username]
     );
     user.maps = userMaps.rows;
+    return user;
+  }
+
+  static async createAuth0({ username, firstName, lastName, email, isAdmin }) {
+    const result = await db.query(
+      `INSERT INTO users
+         (username,
+          first_name,
+          last_name,
+          email,
+          is_admin,
+          auth_type)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         RETURNING username, first_name AS "firstName", last_name AS "lastName", email, is_admin AS "isAdmin", auth_type AS "authType"`,
+      [username, firstName, lastName, email, false, "auth0"]
+    );
+    const user = result.rows[0];
     return user;
   }
 
@@ -190,13 +207,14 @@ class User {
   }
 
   static async createMap(username, data) {
-    const { name, source, file, notes } = data;
+    const { name, file, notes } = data;
+
     const result = await db.query(
       `INSERT INTO maps
-           ( name, source, file, note, user_username)
-           VALUES ($1, $2, $3, $4, $5)
-           RETURNING id, name, source, file, note`,
-      [name, source, file, notes, username]
+           ( name, file, note, user_username)
+           VALUES ($1, $2, $3, $4)
+           RETURNING id, name, file, note`,
+      [name, file, notes, username]
     );
     const newMap = result.rows[0];
 

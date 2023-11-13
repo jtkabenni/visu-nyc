@@ -31,14 +31,13 @@
     },
     "isAdmin": {
       "type": "boolean"
+    },
+    "authType": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 30
     }
   },
   "additionalProperties": false,
-  "required": [
-    "username",
-    "firstName",
-    "lastName",
-    "password",
-    "email"
-  ]
+  "required": ["username", "firstName", "lastName", "password", "email"]
 }
