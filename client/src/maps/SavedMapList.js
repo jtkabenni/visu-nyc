@@ -2,7 +2,6 @@ import React from "react";
 import SavedMapCard from "./SavedMapCard";
 
 function SavedMapList({ maps }) {
-  console.log(maps);
   return (
     <div class="map-list">
       <h3>All maps</h3>

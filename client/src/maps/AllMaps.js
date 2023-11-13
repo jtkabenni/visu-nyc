@@ -22,7 +22,6 @@ function AllMaps() {
   if (!currUser) {
     return <Navigate to="/" />;
   }
-  console.log(maps);
   return (
     <div class="container">
       <SavedMapList maps={maps}></SavedMapList>
