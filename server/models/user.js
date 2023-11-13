@@ -145,6 +145,23 @@ class User {
     return user;
   }
 
+  static async createAuth0({ username, firstName, lastName, email, isAdmin }) {
+    const result = await db.query(
+      `INSERT INTO users
+         (username,
+          first_name,
+          last_name,
+          email,
+          is_admin,
+          auth_type)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         RETURNING username, first_name AS "firstName", last_name AS "lastName", email, is_admin AS "isAdmin", auth_type AS "authType"`,
+      [username, firstName, lastName, email, false, "auth0"]
+    );
+    const user = result.rows[0];
+    return user;
+  }
+
   static async update(username, data) {
     if (data.password) {
       data.password = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
@@ -191,6 +208,7 @@ class User {
 
   static async createMap(username, data) {
     const { name, file, notes } = data;
+
     const result = await db.query(
       `INSERT INTO maps
            ( name, file, note, user_username)

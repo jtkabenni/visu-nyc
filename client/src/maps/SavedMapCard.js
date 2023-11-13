@@ -2,7 +2,7 @@ import React from "react";
 
 function SavedMapCard({ m }) {
   return (
-    <div class="map-card">
+    <div className="map-card">
       <img src={`${process.env.REACT_APP_DOMAIN}/${m.file}`}></img>
       <p>
         <b>

@@ -9,7 +9,7 @@ import UserContext from "../auth/UserContext";
  */
 
 const SaveMapForm = ({ saveMap }) => {
-  const { user } = useContext(UserContext);
+  const { currUser } = useContext(UserContext);
 
   const INITIAL_STATE = {
     name: "",
@@ -52,10 +52,10 @@ const SaveMapForm = ({ saveMap }) => {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (!currUser) {
       navigate("/");
     }
-  }, [user, navigate]);
+  }, [currUser, navigate]);
   /** render form */
   return (
     <div class="form-container">

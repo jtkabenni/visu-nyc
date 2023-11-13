@@ -10,13 +10,13 @@ import UserContext from "../auth/UserContext";
  */
 
 const ProfileForm = ({ update }) => {
-  const { user } = useContext(UserContext);
+  const { currUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    username: user.username,
+    firstName: currUser.firstName,
+    lastName: currUser.lastName,
+    email: currUser.email,
+    username: currUser.username,
     password: "",
   });
   const [formErrors, setFormErrors] = useState([]);
@@ -50,7 +50,7 @@ const ProfileForm = ({ update }) => {
       [name]: value,
     }));
   };
-  if (!user) {
+  if (!currUser) {
     return <Navigate to="/" />;
   }
   /** render form */

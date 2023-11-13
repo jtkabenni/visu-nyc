@@ -54,7 +54,7 @@ router.post("/", ensureAdmin, async function (req, res, next) {
  * Authorization required: admin
  **/
 
-router.get("/", ensureAdmin, async function (req, res, next) {
+router.get("/", async function (req, res, next) {
   try {
     const users = await User.findAll();
     return res.json({ users });
@@ -83,6 +83,26 @@ router.get(
     }
   }
 );
+
+router.get("/auth0/:username", async function (req, res, next) {
+  try {
+    const user = await User.get(req.params.username);
+    console.log(user);
+    return res.json({ user });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+router.post("/auth0", async function (req, res, next) {
+  try {
+    const user = await User.createAuth0(req.body);
+    console.log(user);
+    return res.json({ user });
+  } catch (err) {
+    return next(err);
+  }
+});
 
 /** PATCH /[username] { user } => { user }
  *
@@ -134,11 +154,9 @@ const multer = require("multer");
 const path = require("path");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log("1", file);
     return cb(null, "Images");
   },
   filename: function (req, file, cb) {
-    console.log("FILEEEEEE", file);
     return cb(null, `${Date.now()}_${file.originalname}`);
   },
 });
@@ -149,7 +167,6 @@ router.post(
   ensureLoggedIn,
   upload.single("file"),
   async function (req, res, next) {
-    console.log("REQ", req.body, req.file);
     console.log("Uploaded");
     const schema = {
       ...req.body,
@@ -164,7 +181,7 @@ router.post(
       }
 
       const newMap = await User.createMap(req.params.username, schema);
-      console.log("NEW MAPP", newMap);
+      console.log("NEW MAP:", newMap);
       return res.status(201).json({ newMap });
     } catch (err) {
       return next(err);

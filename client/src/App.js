@@ -8,10 +8,17 @@ import { BrowserRouter } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import UserContext from "./auth/UserContext";
 import AppFooter from "./AppFooter";
-
+import { useAuth0 } from "@auth0/auth0-react";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState(null);
+  const {
+    user: auth0User,
+    loginWithRedirect,
+    logout: authLogout,
+    isAuthenticated,
+  } = useAuth0();
+  const [currUser, setCurrUser] = useState(null);
+  const [currUserMaps, setCurrUserMaps] = useState([]);
 
   // const [allMaps, setAllMaps] = useState[]
 
@@ -41,8 +48,9 @@ function App() {
 
   async function saveMap(data) {
     try {
-      const newMap = await NycvisuApi.saveMap(user.username, data);
+      const newMap = await NycvisuApi.saveMap(currUser.username, data);
       console.log(newMap);
+      setCurrUserMaps([...currUser.maps, newMap]);
       return { success: true };
     } catch (errors) {
       console.error("save map failed", errors);
@@ -53,12 +61,13 @@ function App() {
   function logout() {
     setToken(null);
     localStorage.removeItem("token");
-    setUser(null);
+    setCurrUser(null);
+    authLogout();
   }
 
   async function update(data) {
     try {
-      const result = await NycvisuApi.updateUser(user.username, data);
+      const result = await NycvisuApi.updateUser(currUser.username, data);
       console.log(result);
       return { success: true };
     } catch (errors) {
@@ -72,22 +81,29 @@ function App() {
       async function user() {
         if (token) {
           NycvisuApi.token = token;
-
           const decoded = jwt_decode(token);
           const user = await NycvisuApi.getUser(decoded.username);
-          setUser(user);
+          console.log(user);
+          setCurrUserMaps(user.maps);
+          setCurrUser(user);
+        } else if (isAuthenticated) {
+          NycvisuApi.token = "auth0";
+          const user = await NycvisuApi.getAuth0User(auth0User.sub);
+          console.log(user);
+          setCurrUserMaps(user.maps);
+          setCurrUser(user);
         }
       }
       user();
     },
 
-    [token]
+    [token, isAuthenticated]
   );
 
   return (
     <div className="App">
       <BrowserRouter>
-        <UserContext.Provider value={{ user }}>
+        <UserContext.Provider value={{ currUser, setCurrUser, currUserMaps }}>
           <NavBar logout={logout} token={token}></NavBar>
           <AllRoutes
             saveMap={saveMap}
