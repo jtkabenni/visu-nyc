@@ -22,7 +22,7 @@ Visu-nyc is deployed using [Render](https://render.com/) at [Visu-NYC](https://v
 
 ## Features
 
-- **Secure authentication:** Securely sign up or login with password encryption, or with Google using Auth0
+- **Secure authentication:** Securely sign up or login with password encryption
 - **NYC geospacial data pre-populated:** Data will be pre loaded into the kepler.gl map.
 - **Adjust layers and filters on map:** adjust the layers and filters to control the data they see in the map.
 - **Export maps:** export maps and data files locally
@@ -45,7 +45,6 @@ Visu-nyc is deployed using [Render](https://render.com/) at [Visu-NYC](https://v
 - Node.js
 - PostgreSQL
 - Express.js
-- Auth0
 
 ## Feedback
 

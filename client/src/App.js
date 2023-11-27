@@ -8,15 +8,15 @@ import { BrowserRouter } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import UserContext from "./auth/UserContext";
 import AppFooter from "./AppFooter";
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const {
-    user: auth0User,
-    loginWithRedirect,
-    logout: authLogout,
-    isAuthenticated,
-  } = useAuth0();
+  // const {
+  //   user: auth0User,
+  //   loginWithRedirect,
+  //   logout: authLogout,
+  //   isAuthenticated,
+  // } = useAuth0();
   const [currUser, setCurrUser] = useState(null);
   const [currUserMaps, setCurrUserMaps] = useState([]);
 
@@ -62,7 +62,7 @@ function App() {
     setToken(null);
     localStorage.removeItem("token");
     setCurrUser(null);
-    authLogout();
+    // authLogout();
   }
 
   async function update(data) {
@@ -86,18 +86,12 @@ function App() {
           console.log(user);
           setCurrUserMaps(user.maps);
           setCurrUser(user);
-        } else if (isAuthenticated) {
-          NycvisuApi.token = "auth0";
-          const user = await NycvisuApi.getAuth0User(auth0User.sub);
-          console.log(user);
-          setCurrUserMaps(user.maps);
-          setCurrUser(user);
         }
       }
       user();
     },
 
-    [token, isAuthenticated]
+    [token]
   );
 
   return (

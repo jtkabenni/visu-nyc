@@ -3,7 +3,7 @@ import SavedMapCard from "./SavedMapCard";
 
 function SavedMapList({ maps }) {
   return (
-    <div class="map-list">
+    <div className="map-list">
       <h3>All maps</h3>
       {maps.length > 0 ? (
         <>

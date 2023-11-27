@@ -14,9 +14,9 @@ const { UnauthorizedError } = require("../expressError");
  * It's not an error if no token was provided or if the token is not valid.
  */
 function authenticateJWT(req, res, next) {
-  if (req.headers.authorization === "Bearer auth0") {
-    return next();
-  }
+  // if (req.headers.authorization === "Bearer auth0") {
+  //   return next();
+  // }
   try {
     const authHeader = req.headers && req.headers.authorization;
     if (authHeader) {
@@ -35,9 +35,9 @@ function authenticateJWT(req, res, next) {
  */
 
 function ensureLoggedIn(req, res, next) {
-  if (req.headers.authorization === "Bearer auth0") {
-    return next();
-  }
+  // if (req.headers.authorization === "Bearer auth0") {
+  //   return next();
+  // }
   try {
     if (!res.locals.user) throw new UnauthorizedError();
     return next();
