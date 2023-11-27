@@ -10,7 +10,7 @@ Visu-NYC is a geospacial visualization application that allows users to see publ
 
 ## Data used
 
-Data from NYC Open Data was processed and included as csvs to populate the kepler maps.
+Data from NYC Open Data was processed with Google Colab and included as csvs to populate the kepler maps.
 
 - [NYC 2010 Census tract data](https://data.cityofnewyork.us/City-Government/2010-Census-Tracts/fxpq-c8ku/data)
 - [2015 Street Tree Census](https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh)
@@ -19,6 +19,11 @@ Data from NYC Open Data was processed and included as csvs to populate the keple
 ## Deployment
 
 Visu-nyc is deployed using [Render](https://render.com/) at [Visu-NYC](https://visu-nyc-frontend.onrender.com/).
+
+To test the app:
+
+- Username: testuser
+- Password: password
 
 ## Features
 
