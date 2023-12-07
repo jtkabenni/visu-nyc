@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="profile-sections"
+    >
+      <div
+        class="profile-details"
+      >
+        <h3>
+           
+        </h3>
+        <div
+          class="profile-detail"
+        >
+          <p>
+            <b>
+              Username
+            </b>
+          </p>
+          <p>
+             testuser
+          </p>
+        </div>
+        <div
+          class="profile-detail"
+        >
+          <p>
+            <b>
+              Email address
+            </b>
+          </p>
+          <p>
+             test@test.net
+          </p>
+        </div>
+        <div
+          class="profile-detail"
+        >
+          <p>
+            <b>
+              Total maps
+            </b>
+          </p>
+          <p>
+             0 maps
+          </p>
+        </div>
+        <button>
+          <a
+            href="/profile/update"
+          >
+            Update
+          </a>
+        </button>
+      </div>
+      <div
+        class="map-list"
+      >
+        <h3>
+          All maps
+        </h3>
+        <i>
+          No maps added yet.
+        </i>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

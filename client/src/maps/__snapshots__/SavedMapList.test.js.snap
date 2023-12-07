@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot with no jobs 1`] = `
+<DocumentFragment>
+  <div
+    class="map-list"
+  >
+    <h3>
+      All maps
+    </h3>
+    <div
+      class="map-card"
+    >
+      <p>
+        <b>
+          BK maps 
+        </b>
+      </p>
+      <p>
+        bk map note
+      </p>
+    </div>
+    <div
+      class="map-card"
+    >
+      <p>
+        <b>
+          BK maps 2 
+        </b>
+      </p>
+      <p>
+        bk map note
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

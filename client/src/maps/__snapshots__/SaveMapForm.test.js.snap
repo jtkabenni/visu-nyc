@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="form-container"
+  >
+    <form>
+      <h3>
+        Add a new map
+      </h3>
+      <input
+        id="name"
+        name="name"
+        placeholder="Name"
+        value=""
+      />
+      <input
+        id="file"
+        name="file"
+        placeholder="File"
+        type="file"
+      />
+      <input
+        id="notes"
+        name="notes"
+        placeholder="Notes"
+        value=""
+      />
+      <button>
+        Save
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

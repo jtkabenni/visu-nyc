@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="map-card"
+  >
+    <img
+      src="http://localhost:3001//"
+    />
+    <p>
+      <b>
+        BK maps 
+      </b>
+    </p>
+    <p>
+      bk map note
+    </p>
+  </div>
+</DocumentFragment>
+`;
