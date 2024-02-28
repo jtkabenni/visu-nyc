@@ -1,3 +1,5 @@
+Update: Project no longer live on Render due to subscription limit.
+
 # Visu-NYC Documentation
 
 Visu-NYC is a geospacial visualization application that allows users to see public data from NYC. This app embeds a map component called [kepler.gl](https://github.com/keplergl/kepler.gl) and has backend functionality to allow users to create accounts and save maps to their profiles.
@@ -15,15 +17,6 @@ Data from NYC Open Data was processed with Google Colab and included as csvs to 
 - [NYC 2010 Census tract data](https://data.cityofnewyork.us/City-Government/2010-Census-Tracts/fxpq-c8ku/data)
 - [2015 Street Tree Census](https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/uvpi-gqnh)
 - [DOHMH New York City Restaurant Inspection Results](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j)
-
-## Deployment
-
-Visu-nyc is deployed using [Render](https://render.com/) at [Visu-NYC](https://visu-nyc-frontend.onrender.com/).
-
-To test the app:
-
-- Username: testuser
-- Password: password
 
 ## Features
 
@@ -53,4 +46,4 @@ To test the app:
 
 ## Feedback
 
-Reach out to jennytakahara@gmail.com with any questions or feedback!
+Reach out to jennytakahara@gmail.com with any questions or feedback.
